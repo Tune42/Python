@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div id="quoted">
+        <p><font color="{% if dark == 'true' %}white{% else %}black{% endif %}">The current share price for {{ symbol }} is {{ price }}.</font></p>
+
+        <a href="/quote">Request another quote</a>
+        <a href="/" style=padding-left:1em>Return to home</a>
+    </div>
+{% endblock %}
+
+{% block js %}
+{% if dark == 'true' %}
+<script>
+  var button = document.getElementById("theme-toggle");
+  button.innerHTML = 'Light Theme';
+  button.classList.remove("btn-dark");
+  button.classList.add("btn-light");
+  var nav = document.getElementById("navbar");
+  nav.classList.remove("navbar-light","bg-light");
+  nav.classList.add("navbar-dark","bg-dark","text-light");
+  document.body.style.backgroundColor = "black";
+  var tab = document.getElementById("table");
+  tab.classList.add("text-light");
+</script>
+{% endif %}
+{% endblock %}

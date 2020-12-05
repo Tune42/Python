@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Purchase Shares
+{% endblock %}
+
+{% block main %}
+    <form action="/buy" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" min="0" name="shares" placeholder="Shares" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Purchase Shares</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+{% if dark == 'true' %}
+<script>
+  var button = document.getElementById("theme-toggle");
+  button.innerHTML = 'Light Theme';
+  button.classList.remove("btn-dark");
+  button.classList.add("btn-light");
+  var nav = document.getElementById("navbar");
+  nav.classList.remove("navbar-light","bg-light");
+  nav.classList.add("navbar-dark","bg-dark","text-light");
+  document.body.style.backgroundColor = "black";
+  var tab = document.getElementById("table");
+  tab.classList.add("text-light");
+</script>
+{% endif %}
+{% endblock %}

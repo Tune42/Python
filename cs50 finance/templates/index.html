@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stocks Overview
+{% endblock %}
+
+{% block main %}
+<table id="table" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Name</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for key, value in stocks.items() %}
+    {% if value[1] != 0 %}
+    <tr>
+      <th scope="row">{{ key }}</th>
+      <td>{{ value[0] }}</td>
+      <td>{{ value[1] }}</td>
+      <td>{{ value[2] }}</td>
+      <td>{{ value[3] }}</td>
+    </tr>
+    {% endif %}
+  {% endfor %}
+    <tr>
+      <th scope="row">CASH</th>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>{{ cash }}</td>
+    </tr>
+    <tr>
+      <th scope="row"> </th>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>{{ balance }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
+
+{% block js %}
+{% if dark == 'true' %}
+<script>
+  var button = document.getElementById("theme-toggle");
+  button.innerHTML = 'Light Theme';
+  button.classList.remove("btn-dark");
+  button.classList.add("btn-light");
+  var nav = document.getElementById("navbar");
+  nav.classList.remove("navbar-light","bg-light");
+  nav.classList.add("navbar-dark","bg-dark","text-light");
+  document.body.style.backgroundColor = "black";
+  var tab = document.getElementById("table");
+  tab.classList.add("text-light");
+</script>
+{% endif %}
+{% endblock %}

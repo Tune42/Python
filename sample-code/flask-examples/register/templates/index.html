@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Registrants</h1>
+    <ol>
+        {% for row in rows %}
+            <li>{{ row[1] }} ({{ row[2] }})</li>
+        {% endfor %}
+    </ol>
+    <a href="/register" style=padding-left:3em;>Register</a>
+    <a href="/unsubscribe" style=padding-left:3em;>Unsubscribe</a>
+{% endblock %}

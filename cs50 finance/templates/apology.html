@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <img alt="{{ top }}" class="border" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png" title="{{ top }}">
+{% endblock %}
+
+{% block js %}
+{% if dark == 'true' %}
+<script>
+  var button = document.getElementById("theme-toggle");
+  button.innerHTML = 'Light Theme';
+  button.classList.remove("btn-dark");
+  button.classList.add("btn-light");
+  var nav = document.getElementById("navbar");
+  nav.classList.remove("navbar-light","bg-light");
+  nav.classList.add("navbar-dark","bg-dark","text-light");
+  document.body.style.backgroundColor = "black";
+  var tab = document.getElementById("table");
+  tab.classList.add("text-light");
+</script>
+{% endif %}
+{% endblock %}
